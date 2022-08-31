@@ -1,0 +1,26 @@
+<ion-list>
+    <ion-item>
+        Hello
+    </ion-item>
+    <ion-item>
+        Io
+    </ion-item>
+</ion-list>
+
+<ion-card>
+    <ion-card-header>
+        <ion-card-title>My Ionic card</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        This really works!
+    </ion-card-content>
+    <ion-button expand="full" color="secondary">Button</ion-button>
+</ion-card>
+
+<div class="card-container">
+    <button class="card card-small" (click)="captureImage()">
+        <span>Capture image</span>
+    </button>
+</div>
+
+<img [src]="image" *ngIf="image" [style.width]="'300px'">
