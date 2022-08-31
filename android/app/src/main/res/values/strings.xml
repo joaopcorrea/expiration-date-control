@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Expiration Date Control</string>
+    <string name="title_activity_main">Expiration Date Control</string>
+    <string name="package_name">com.expirationcontrol.app</string>
+    <string name="custom_url_scheme">com.expirationcontrol.app</string>
+</resources>
