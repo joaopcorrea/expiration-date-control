@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   title = 'Controle de Validade';
   image = '';
 
+  products: any = [{}];
+
   async captureImage() {
     const image = await Camera.getPhoto({
       quality: 90,
@@ -27,6 +29,24 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.products = [{
+      barcode: '1111111',
+      name: 'Manga',
+      image: '',
+      expirationDate: '',
+      category: '',
+      group: '',
+      price: '',
+      quantity: ''
+    },
+    {
+      barcode: '22222',
+      name: 'Garrafa',    
+    },
+    {
+      barcode: '3333333',
+      name: 'Pão',
+    }];
   }
 
 }
