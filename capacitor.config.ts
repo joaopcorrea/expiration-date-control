@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'dist/expiration-date-control',
   bundledWebRuntime: false,
   server: {
-    url: 'http://192.168.0.218:4200',
+    url: 'http://192.168.0.151:4200',
     cleartext: true
   }
 };

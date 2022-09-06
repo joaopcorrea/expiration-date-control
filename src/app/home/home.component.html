@@ -8,19 +8,31 @@
 </ion-header>
 
 <ion-content>
-  <div class="content">
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button color="dark" (click)="captureImage()">
-        <ion-icon name="add"></ion-icon>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button 
+        data-desc="Ler código de barras" 
+        color="primary"
+        (click)="captureImage()">
+        <ion-icon name="barcode-outline"></ion-icon>
       </ion-fab-button>
-    </ion-fab>
+      <ion-fab-button 
+        data-desc="Adicionar manualmente" 
+        routerLink="/create-product"
+        color="primary">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
-    <ion-list>
-      <ion-item *ngFor="let product of products">
-        {{product.barcode}} - {{product.name}}
-      </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      {{product.barcode}} - {{product.name}}
+    </ion-item>
+  </ion-list>
 
-    <img [src]="image" *ngIf="image" [style.width]="'300px'">
-  </div>
+  <img [src]="image" *ngIf="image" [style.width]="'300px'">
 </ion-content>
