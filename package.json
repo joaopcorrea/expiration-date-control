@@ -24,8 +24,8 @@
     "@capacitor/camera": "^4.1.0",
     "@capacitor/core": "^4.1.0",
     "@ionic/angular": "^6.2.5",
+    "@ionic/storage-angular": "^3.0.6",
     "ionicons": "^6.0.3",
-    "lowdb": "^3.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

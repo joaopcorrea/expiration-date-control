@@ -6,13 +6,47 @@
       </ion-button>
     </ion-buttons>
     <ion-title>Adicionar Produto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="clickAdd()">
+        Adicionar
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-icon name="cart-outline"></ion-icon>
-      <ion-input placeholder="Descrição"></ion-input>
-    </ion-item>
-  </ion-list>
+  <div class="img-wrapper">
+    <ion-img [src]="image"></ion-img>
+    <ion-button color="light" (click)="captureImage()">
+      <ion-icon name="camera-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="calendar-number-outline"></ion-icon>
+        <ion-input formControlName="expirationDate" placeholder="Data de validade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="barcode-outline"></ion-icon>
+        <ion-input formControlName="barcode" placeholder="Código de barras"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-input formControlName="name" placeholder="Descrição"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pricetag-outline"></ion-icon>
+        <ion-input formControlName="category" placeholder="Categoria"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="cash-outline"></ion-icon>
+        <ion-input formControlName="price" placeholder="Preço"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="layers-outline"></ion-icon>
+        <ion-input formControlName="quantity" placeholder="Quantidade"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

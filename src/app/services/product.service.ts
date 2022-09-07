@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() {
+  constructor(private dbService: DatabaseService) {
   }
 
-  create() {
-
+  async create(product: Product) {
+    await this.dbService.create(product);
   }
 
   getAll() {
-    
+    return this.dbService.getAll();
   }
 
 }

@@ -1,0 +1,48 @@
+.img-wrapper {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+
+  position: relative;
+
+  ion-img {
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+  }
+
+  ion-button {
+    --border-width: 1px;
+    --border-color: var(--ion-color-light-shade);
+    --border-style: solid;
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-bottom: 0;
+    --padding-top: 0;
+
+    --border-radius: 50%;
+    height: 26px;
+    width: 26px;
+
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+
+    ion-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+ion-list {
+  ion-item {
+    ion-icon {
+      padding-right: 10px;
+    }
+  }
+
+  ion-item:last-child {
+    --border-width: 0px;
+  }
+}

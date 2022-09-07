@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Product } from '../models/product.model';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ export class HomeComponent implements OnInit {
   title = 'Controle de Validade';
   image = '';
 
-  products: any = [{}];
+  products: Product[] = [];
 
   async captureImage() {
     const image = await Camera.getPhoto({
@@ -26,27 +28,21 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private productService: ProductService) { 
+  }
 
   ngOnInit(): void {
-    this.products = [{
-      barcode: '1111111',
-      name: 'Manga',
-      image: '',
-      expirationDate: '',
-      category: '',
-      group: '',
-      price: '',
-      quantity: ''
-    },
-    {
-      barcode: '22222',
-      name: 'Garrafa',    
-    },
-    {
-      barcode: '3333333',
-      name: 'Pão',
-    }];
+    this.loadProducts();
+  }
+
+  async loadProducts() {
+    this.products = await this.productService.getAll();
+  }
+
+  async refreshProducts(event: any) {
+    await this.loadProducts();
+
+    event.target.complete();
   }
 
 }

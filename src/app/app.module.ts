@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CreateProductComponent } from './create-product/create-product.componen
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
