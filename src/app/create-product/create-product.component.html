@@ -16,7 +16,7 @@
 </ion-header>
 <ion-content>
   <div class="img-wrapper">
-    <ion-img [src]="image"></ion-img>
+    <ion-img [src]="image" (click)="showImage()"></ion-img>
     <ion-button color="light" (click)="captureImage()">
       <ion-icon name="camera-outline" slot="icon-only"></ion-icon>
     </ion-button>

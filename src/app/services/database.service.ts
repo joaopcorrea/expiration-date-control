@@ -1,5 +1,8 @@
 import { Storage } from '@ionic/storage-angular';
 import { Injectable } from '@angular/core';
+import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+import * as cordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+import { BehaviorSubject, filter, from, of, switchMap } from 'rxjs';
 
 const STORAGE_KEY = 'products';
 
@@ -7,13 +10,17 @@ const STORAGE_KEY = 'products';
   providedIn: 'root'
 })
 export class DatabaseService {
+  private storageReady = new BehaviorSubject(false);
 
   constructor(private storage: Storage) {
     this.init();
   }
 
-  init() {
-    this.storage.create();
+  async init() {
+    await this.storage.defineDriver(cordovaSQLiteDriver);
+    await this.storage.create();
+
+    this.storageReady.next(true);
   }
 
   async create<T>(item: T) {
@@ -29,7 +36,12 @@ export class DatabaseService {
   }
 
   getAll() {
-    return this.storage.get(STORAGE_KEY) || [];
+    return this.storageReady.pipe(
+      filter(ready => ready),
+      switchMap(_ => {
+        return from(this.storage.get(STORAGE_KEY)) || of([]);
+      })
+    )
   }
 
 }

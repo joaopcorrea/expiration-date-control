@@ -5,6 +5,10 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Product } from '../models/product.model';
 import { ProductService } from '../services/product.service';
 
+import { AlertController } from '@ionic/angular';
+
+import { PhotoViewer, capShowOptions, capShowResult} from '@capacitor-community/photoviewer';
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -17,7 +21,9 @@ export class CreateProductComponent implements OnInit {
 
   constructor(private productService: ProductService, 
               private formBuilder: FormBuilder,
-              private router: Router) { 
+              private router: Router,
+              // private photoViewer: PhotoViewer,
+              private alertController: AlertController) { 
     this.form = this.formBuilder.group({
       expirationDate: [null],
       barcode: [null],
@@ -51,15 +57,29 @@ export class CreateProductComponent implements OnInit {
 
   async captureImage() {
     const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: true,
+      quality: 10,
+      allowEditing: false,
       source: CameraSource.Prompt,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.Base64,
     });
 
     if (image) {
       this.image = `data:image/jpeg;base64,${image.base64String}`!;
     }
+  }
+
+  async showImage() {
+    if (!this.image) {
+      await this.captureImage();
+      return;
+    }
+
+    const options: capShowOptions = {
+      images: [{ url: this.image, title: 'Product' }],
+      options: {share: false}
+    }
+
+    await PhotoViewer.show(options);
   }
 
 }

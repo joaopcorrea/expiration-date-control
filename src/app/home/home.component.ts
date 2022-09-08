@@ -36,7 +36,10 @@ export class HomeComponent implements OnInit {
   }
 
   async loadProducts() {
-    this.products = await this.productService.getAll();
+    // this.products = await this.productService.getAll();
+    this.productService.getAll().subscribe(res => {
+      this.products = res;
+    });
   }
 
   async refreshProducts(event: any) {

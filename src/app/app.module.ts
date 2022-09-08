@@ -10,6 +10,10 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { Drivers } from '@ionic/storage';
+import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+// import { PhotoViewer } from '@awesome-cordova-plugins/photo-viewer/ngx';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: 'ec-database',
+      driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB, Drivers.LocalStorage]
+    }),
     ReactiveFormsModule
   ],
   providers: [],
