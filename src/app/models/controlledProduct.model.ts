@@ -1,4 +1,4 @@
-export interface Product {
+export interface ControlledProduct {
   barcode: string,
   name: string,
   image: string,

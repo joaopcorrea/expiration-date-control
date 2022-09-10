@@ -11,11 +11,11 @@ import { PhotoViewer, capShowOptions, capShowResult} from '@capacitor-community/
 import { Category } from '../models/category.model';
 
 @Component({
-  selector: 'app-create-product',
-  templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.scss']
+  selector: 'app-update-product',
+  templateUrl: './update-product.component.html',
+  styleUrls: ['./update-product.component.scss']
 })
-export class CreateProductComponent implements OnInit {
+export class UpdateProductComponent implements OnInit {
 
   form: FormGroup;
   image = '';
@@ -40,7 +40,7 @@ export class CreateProductComponent implements OnInit {
     
   }
 
-  async clickAdd() {
+  async clickSave() {
     let product: Product = {
       creationDate: new Date(),
       expirationDate: new Date(this.expirationDate),
@@ -53,7 +53,7 @@ export class CreateProductComponent implements OnInit {
       group: ''
     };
 
-    await this.productService.create(product);
+    // await this.productService.create(product);
     this.router.navigateByUrl('home');
 
     this.form.reset();
@@ -86,5 +86,4 @@ export class CreateProductComponent implements OnInit {
 
     await PhotoViewer.show(options);
   }
-
 }

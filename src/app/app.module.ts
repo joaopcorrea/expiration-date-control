@@ -12,13 +12,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { Drivers } from '@ionic/storage';
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+import { UpdateProductComponent } from './update-product/update-product.component';
 // import { PhotoViewer } from '@awesome-cordova-plugins/photo-viewer/ngx';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
