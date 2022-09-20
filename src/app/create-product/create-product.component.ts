@@ -42,6 +42,8 @@ export class CreateProductComponent implements OnInit {
 
   async clickAdd() {
     let product: Product = {
+      id: 0,
+      description: '',
       creationDate: new Date(),
       expirationDate: new Date(this.expirationDate),
       barcode: this.form.controls['barcode'].value,
